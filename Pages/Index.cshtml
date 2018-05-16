@@ -1,0 +1,15 @@
+﻿@page
+@model IndexModel
+@{
+  ViewData["Title"] = "Home page";
+}
+
+<h1>Hello</h1>
+<div id="abc"></div>
+
+@section Scripts {
+  <script type="text/x-template" id="index-component">
+    <p>{{title}}</p>
+  </script>
+  <script type="text/javascript" src="~/js/pages/index.js"></script>
+}
