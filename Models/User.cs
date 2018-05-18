@@ -20,6 +20,8 @@ namespace Citador.Models
     public string Password { get; set; }
     [MaxLength(60)]
     public string Username { get; set; }
+
+    public ICollection<Permission> Permissions { get; set; }
   }
 
   public class UserDTO
@@ -28,5 +30,8 @@ namespace Citador.Models
     public string LastName { get; set; }
     public string Email { get; set; }
     public string Username { get; set; }
+
+    public int RoleId { get; set; }
+    public Permission Role { get; set; }
   }
 }
