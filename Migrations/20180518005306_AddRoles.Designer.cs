@@ -11,9 +11,10 @@ using System;
 namespace Citador.Migrations
 {
     [DbContext(typeof(CitadorContext))]
-    partial class CitadorContextModelSnapshot : ModelSnapshot
+    [Migration("20180518005306_AddRoles")]
+    partial class AddRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
