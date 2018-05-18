@@ -1,9 +1,62 @@
 ﻿@page
 @model AboutModel
-@{
-    ViewData["Title"] = "About";
-}
-<h2>@ViewData["Title"]</h2>
-<h3>@Model.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<article class="container">
+  <header><h1 class="center-align">Resume</h1></header>
+  <div class="card-panel article-wrapper">
+    <aside>
+      left
+    </aside>
+    <section class="main-content">
+      <header class="center-align">
+        <h4>@Model.Resume?.Basics?.Name</h4>
+        <figure class="avatar">
+          @if (@Model.Resume.Basics.Picture.Length > 0)
+          {
+            <img src="@Model.Resume.Basics.Picture" alt="@Model.Resume?.Basics?.Name" />
+          }
+          else
+          {
+            <img src="http://placehold.it/150x200/" alt="" />
+          }
+          <figcaption>@Model.Resume?.Basics?.Name</figcaption>
+        </figure>
+        <p class="flow-text">
+          @if (@Model.Resume.Basics.Summary.Length > 0)
+          {
+            @Model.Resume.Basics.Summary
+          }
+          else
+          {
+            <span>Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.</span>
+          }
+        </p>
+      </header>
+      <section class="container">
+        <div class="card center-align">
+          apparently center
+        </div>
+      </section>
+    </section>
+    <aside>right</aside>
+  </div>
+</article>
+
+@section CustomStyle {
+  <style>
+    .article-wrapper {
+      display: flex;
+      flex-direction: row;
+    }
+
+      .article-wrapper > * {
+        flex: 1 100%;
+      }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      padding: 3.5rem;
+    }
+  </style>
+}

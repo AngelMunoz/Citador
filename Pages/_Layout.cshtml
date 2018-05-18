@@ -1,59 +1,80 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Citador</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - Citador</title>
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/materialize/css/materialize.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"
-              asp-fallback-href="~/lib/materialize/css/materialize.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+  <environment include="Development">
+    <link rel="stylesheet" href="~/lib/materialize/css/materialize.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+  </environment>
+  <environment exclude="Development">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"
+          asp-fallback-href="~/lib/materialize/css/materialize.min.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+  </environment>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <header>
-        @RenderSection("Header", required: false)
-    </header>
-    <main>
-        @RenderBody()
-    </main>
-    <footer>
-        @RenderSection("Footer", required: false)
-        <hr />
-        <footer>
-            <p>&copy; 2018 - Citador</p>
-        </footer>
-    </footer>
+  @RenderSection("CustomStyle", required: false)
+  <header>
+    <nav class="brown">
+      <div class="nav-wrapper">
+        <a asp-page="/Index" class="brand-logo">Logo</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-    <environment include="Development">
-        <script src="~/lib/vue/vue.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"
-                asp-fallback-src="~/lib/vue/vue.min.js"
-                asp-fallback-test="window.Vue">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
-    <environment include="Development">
-        <script src="~/lib/materialize/js/materialize.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"
-                asp-fallback-src="~/lib/materialize/js/materialize.min.js"
-                asp-fallback-test="window.M">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+        <ul class="right hide-on-med-and-down">
+          <li><a asp-page="/About">About</a></li>
+          <li><a asp-page="/Contact">Contact</a></li>
+          @RenderSection("NavbarLinks", required: false)
+        </ul>
+      </div>
+    </nav>
 
-    @RenderSection("Scripts", required: false)
+    <ul class="sidenav" id="mobile-demo">
+      <li><a asp-page="/About">About</a></li>
+      <li><a asp-page="/Contact">Contact</a></li>
+      @RenderSection("MobileNavbarLinks", required: false)
+    </ul>
+
+    @RenderSection("Header", required: false)
+  </header>
+  <main>
+    @RenderBody()
+  </main>
+  <footer>
+    <div class="row">
+      @RenderSection("Footer", required: false)
+    </div>
+    <div class="divider"></div>
+    <p>&copy; 2018 - Angel D. Munoz</p>
+  </footer>
+
+  <environment include="Development">
+    <script src="~/lib/vue/vue.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+  </environment>
+  <environment exclude="Development">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"
+            asp-fallback-src="~/lib/vue/vue.min.js"
+            asp-fallback-test="window.Vue">
+    </script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+  </environment>
+  <environment include="Development">
+    <script src="~/lib/materialize/js/materialize.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+  </environment>
+  <environment exclude="Development">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"
+            asp-fallback-src="~/lib/materialize/js/materialize.min.js"
+            asp-fallback-test="window.M">
+    </script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+  </environment>
+
+  @RenderSection("Scripts", required: false)
 </body>
 </html>

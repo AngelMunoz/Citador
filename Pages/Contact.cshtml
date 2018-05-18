@@ -1,19 +1,38 @@
 ﻿@page
 @model ContactModel
 @{
-    ViewData["Title"] = "Contact";
+  ViewData["Title"] = "Contact Me!";
+  ViewData["Header"] = "I'm Angel D. Munoz, Software Developer";
 }
-<h2>@ViewData["Title"]</h2>
-<h3>@Model.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+@section Header {
+  <h2 class="center-align">@ViewData["Header"]</h2>
+}
 
-<address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<article class="container">
+  <p class="flow-text">
+    Hello! It seems that you have come accross one of my demos, <br />
+    If you feel like this is something you could use, or that I may fit in your company <br />
+    feel free to contact me on the credentials below.
+  </p>
+</article>
+
+
+@section Footer {
+  <article class="container">
+    <address class="card">
+      <div class="card-content">
+        <p>Angel D. Munoz</p>
+        <p>
+          <a href="https://github.com/AngelMunoz">Github</a>
+        </p>
+        <p>
+          <a href="https://twitter.com/daniel_tuna">Twitter</a>
+        </p>
+        <div class="divider"></div>
+        <strong>Like this? Ping me!:</strong> <a href="mailto:angel.munoz@tunaxor.me">angel.munoz@tunaxor.me</a>
+      </div>
+    </address>
+  </article>
+}
+
