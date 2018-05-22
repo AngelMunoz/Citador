@@ -1,0 +1,62 @@
+﻿@page
+@model Citador.Pages.SignupModel
+
+@{
+  ViewData["Title"] = "Signup";
+  Layout = "~/Pages/_Layout.cshtml";
+}
+
+@if (ViewData["Error"] != null)
+{
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+      if(`@ViewData["Error"]`) {
+        M.toast({
+          html: `@ViewData["Error"]`,
+          classes: "white-text red"
+        });
+      }
+    }, false);
+  </script>
+}
+<div class="container">
+  <h2>Signup</h2>
+  <div class="divider"></div>
+  <div class="card-panel col s4">
+    <form method="post">
+      <div asp-validation-summary="ModelOnly" class="red-text"></div>
+      <div class="input-field">
+        <label asp-for="User.Name" class="active"></label>
+        <input asp-for="User.Name" type="text" required class="validate" />
+        <span asp-validation-for="User.Name" class="red-text"></span>
+      </div>
+      <div class="input-field">
+        <label asp-for="User.LastName" class="active"></label>
+        <input asp-for="User.LastName" type="text" required class="validate" />
+        <span asp-validation-for="User.LastName" class="red-text"></span>
+      </div>
+      <div class="input-field">
+        <label asp-for="User.Email" class="active"></label>
+        <input asp-for="User.Email" type="email" required class="validate" />
+        <span asp-validation-for="User.Email" class="red-text"></span>
+      </div>
+      <div class="input-field">
+        <label asp-for="User.Password" class="active"></label>
+        <input asp-for="User.Password" type="password" required class="validate" />
+        <span asp-validation-for="User.Password" class="red-text"></span>
+      </div>
+      <div class="input-field">
+        <label asp-for="User.Username" class="active"></label>
+        <input asp-for="User.Username" type="text" class="validate" />
+        <span asp-validation-for="User.Username" class="red-text"></span>
+      </div>
+      <div class="input-field">
+        <input type="submit" value="Sign Up" class="btn" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<div>
+  <a asp-page="Index">Back to Home</a>
+</div>
