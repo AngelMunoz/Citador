@@ -19,4 +19,8 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Private\" />
+    <Folder Include="Pages\Public\" />
+  </ItemGroup>
 </Project>
