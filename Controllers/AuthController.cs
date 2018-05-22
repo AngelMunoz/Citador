@@ -32,7 +32,18 @@ namespace Citador.Controllers
 
       user.Password = HashPassword(user.Password);
       _context.Add(user);
-      await _context.SaveChangesAsync();
+      try
+      {
+        await _context.SaveChangesAsync();
+      }
+      catch (DbUpdateException updateEx)
+      {
+        if(updateEx.InnerException.Message.ToLower().Contains("duplicate"))
+        {
+          return BadRequest(updateEx.InnerException.Message);
+        }
+        return StatusCode(StatusCodes.Status500InternalServerError);
+      }
       UserDTO usr = new UserDTO();
       Copier.CopyPropertiesTo(user, usr);
       return CreatedAtAction("SignUp", usr);
