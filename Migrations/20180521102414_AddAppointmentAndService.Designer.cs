@@ -11,14 +11,35 @@ using System;
 namespace Citador.Migrations
 {
     [DbContext(typeof(CitadorContext))]
-    partial class CitadorContextModelSnapshot : ModelSnapshot
+    [Migration("20180521102414_AddAppointmentAndService")]
+    partial class AddAppointmentAndService
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
                 .HasAnnotation("ProductVersion", "2.0.3-rtm-10026");
+
+            modelBuilder.Entity("Citador.Models.Appointment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<int>("ServiceId");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ServiceId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Appointments");
+                });
 
             modelBuilder.Entity("Citador.Models.Permission", b =>
                 {
@@ -37,7 +58,24 @@ namespace Citador.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Permission");
+                    b.ToTable("Permissions");
+                });
+
+            modelBuilder.Entity("Citador.Models.Service", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("Cost");
+
+                    b.Property<double>("Duration");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("Citador.Models.User", b =>
@@ -63,6 +101,19 @@ namespace Citador.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Citador.Models.Appointment", b =>
+                {
+                    b.HasOne("Citador.Models.Service", "Service")
+                        .WithMany()
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Citador.Models.User", "User")
+                        .WithMany("Appointments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Citador.Models.Permission", b =>

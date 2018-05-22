@@ -38,7 +38,7 @@ namespace Citador.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Permission");
+                    b.ToTable("Permissions");
                 });
 
             modelBuilder.Entity("Citador.Models.User", b =>

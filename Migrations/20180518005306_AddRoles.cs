@@ -10,7 +10,7 @@ namespace Citador.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Permission",
+                name: "Permissions",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -21,9 +21,9 @@ namespace Citador.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Permission", x => x.Id);
+                    table.PrimaryKey("PK_Permissions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Permission_Users_UserId",
+                        name: "FK_Permissions_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -31,15 +31,15 @@ namespace Citador.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Permission_UserId",
-                table: "Permission",
+                name: "IX_Permissions_UserId",
+                table: "Permissions",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Permission");
+                name: "Permissions");
         }
     }
 }
